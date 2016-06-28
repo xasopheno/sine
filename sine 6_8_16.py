@@ -1,12 +1,8 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
-import threading
 import math
 import numpy
 import pyaudio
-from threading import Thread
-import subprocess
-from os import system
 
 
 def sine(frequency, length, rate):
@@ -28,7 +24,7 @@ def doit():
     frequency = 100
     length = .04
     length2 = .08
-    while i < 50:
+    while i < 40:
         while frequency < 2800:
             play_tone(stream, frequency, length)
             frequency = float(frequency) * (math.pi * 2) /4.5
@@ -53,7 +49,7 @@ def doit():
     stream.close()
     p.terminate()
 
-def doit2():  
+def doit2():    
     i = 1
     frequency = 100
     length = .04
@@ -73,19 +69,17 @@ def doit2():
         #     frequency = float(frequency) * (math.pi * -2) /3.5
         #     length2 -= .0005
         #     print frequency  
-        # play_tone(stream, 200, 5)  
+        play_tone(stream, 200, 5)  
         i += 1
 
     stream.close()
     p.terminate()    
 
-def func1():
-    print 'Working' * 1000000
-
 if __name__ == '__main__':
     p = pyaudio.PyAudio()
     stream = p.open(format=pyaudio.paFloat32,
                     channels=1, rate=44100, output=1)
+
 
 doit2()
 p = pyaudio.PyAudio()
@@ -99,14 +93,4 @@ stream = p.open(format=pyaudio.paFloat32,
 
 doit2()
 
-
-
-#     
-
-# import numpy as np
-# from scipy.io.wavfile import write
-
-# data = np.random.uniform(-100,100,444100) # 44100 random samples between -1 and 1
-# scaled = np.int16(data/np.max(np.abs(data)) * 32767)
-# write('test.wav', 44100, scaled)
-
+    
