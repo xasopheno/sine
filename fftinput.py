@@ -2,11 +2,13 @@
 import Queue
 import threading
 import time
-from matplotlib.mlab import find
+
 import pyaudio
 import numpy as np
 import math
 from scipy.fftpack import fft, ifft
+
+from matplotlib.mlab import find
 import matplotlib.pyplot as plt
 
 queue = Queue.Queue()
